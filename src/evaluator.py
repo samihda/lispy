@@ -11,6 +11,9 @@ def eval(exp, env=default_env):
             exit(1)
     elif not isinstance(exp, list):
         return exp
+    elif exp[0] == 'quote':
+        (_, rest) = exp
+        return rest
     elif exp[0] == 'if':
         (_, predicate, consequent, alt) = exp
         branch = (consequent if eval(predicate, env) else alt)
