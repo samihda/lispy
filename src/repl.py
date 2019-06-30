@@ -4,6 +4,7 @@ from printer import sexpr
 
 def repl(prompt="> "):
     while True:
+        program = ''
         try:
             program = input(prompt)
         except (KeyboardInterrupt, EOFError):
