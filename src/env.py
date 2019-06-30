@@ -28,4 +28,5 @@ def global_env():
         'length': len,
 
         'apply': lambda proc, args: proc(*args),
+        'begin': lambda *x: x[-1],
     }
