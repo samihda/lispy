@@ -3,8 +3,13 @@ from evaluator import eval
 
 def repl(prompt="> "):
     while True:
-        val = eval(parse(input(prompt)))
-        if val is not None:
+        try:
+            program = input(prompt)
+        except (KeyboardInterrupt, EOFError):
+            print()
+            return
+        if len(program) > 0:
+            val = eval(parse(program))
             print(val)
 
 if __name__ == '__main__':
