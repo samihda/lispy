@@ -15,6 +15,9 @@ def eval(exp, env=default_env):
         (_, predicate, consequent, alt) = exp
         branch = (consequent if eval(predicate, env) else alt)
         return eval(branch, env)
+    elif exp[0] == 'define':
+        (_, symbol, definition) = exp
+        env[symbol] = eval(definition, env)
     else:
         proc = eval(exp[0], env)
         args = [eval(arg, env) for arg in exp[1:]]
