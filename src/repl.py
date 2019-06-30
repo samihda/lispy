@@ -10,7 +10,12 @@ def repl(prompt="> "):
             print()
             return
         if len(program) > 0:
-            val = eval(parse(program))
+            val = None
+            try:
+                val = eval(parse(program))
+            except NameError as e:
+                print(e)
+                continue
             if val is not None:
                 print(sexpr(val))
 

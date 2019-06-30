@@ -7,8 +7,7 @@ def eval(exp, env=default_env):
         try:
             return env[exp]
         except KeyError as e:
-            print(f'Symbol {e} is not defined')
-            exit(1)
+            raise NameError(f'Symbol {e} is not defined')
     elif not isinstance(exp, list):
         return exp
     elif exp[0] == 'quote':
