@@ -11,7 +11,8 @@ def repl(prompt="> "):
             return
         if len(program) > 0:
             val = eval(parse(program))
-            print(sexpr(val))
+            if val is not None:
+                print(sexpr(val))
 
 if __name__ == '__main__':
     repl()
