@@ -2,6 +2,9 @@ import operator as op
 
 def global_env():
     return {
+        '#t': True,
+        '#f': False,
+
         '+': op.add,
         '-': op.sub,
         '*': op.mul,
