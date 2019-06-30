@@ -1,7 +1,16 @@
 import operator as op
 
+class Env(dict):
+    def __init__(self, keys=(), values=(), outer=None):
+        self.update(zip(keys, values))
+        self.outer = outer
+    def find(self, var):
+        return self if (var in self) else self.outer.find(var)
+
 def global_env():
-    return {
+    env = Env()
+
+    env.update({
         '#t': True,
         '#f': False,
 
@@ -32,4 +41,6 @@ def global_env():
 
         'apply': lambda proc, args: proc(*args),
         'begin': lambda *x: x[-1],
-    }
+    })
+
+    return env
