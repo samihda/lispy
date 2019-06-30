@@ -1,5 +1,6 @@
 from reader import parse
 from evaluator import eval
+from printer import sexpr
 
 def repl(prompt="> "):
     while True:
@@ -10,7 +11,7 @@ def repl(prompt="> "):
             return
         if len(program) > 0:
             val = eval(parse(program))
-            print(val)
+            print(sexpr(val))
 
 if __name__ == '__main__':
     repl()
