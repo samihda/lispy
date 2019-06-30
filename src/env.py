@@ -26,4 +26,6 @@ def global_env():
         'cons': lambda x, y: [x] + y,
         'list': lambda *x: list(x),
         'length': len,
+
+        'apply': lambda proc, args: proc(*args),
     }
