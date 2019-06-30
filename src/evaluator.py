@@ -26,6 +26,12 @@ def eval(exp, env=default_env):
     elif exp[0] == 'define':
         (_, symbol, definition) = exp
         env[symbol] = eval(definition, env)
+    elif exp[0] == 'set!':
+        (_, var, body) = exp
+        try:
+            env.find(var)[var] = eval(body, env)
+        except AttributeError as e:
+            raise NameError(f'Symbol \'{var}\' is not defined')
     elif exp[0] == 'lambda':
         (_, params, body) = exp
         return Procedure(params, body, env)
