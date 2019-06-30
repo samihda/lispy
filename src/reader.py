@@ -1,6 +1,15 @@
 def tokenize(s):
     return s.replace('(', ' ( ').replace(')', ' ) ').split()
 
+def atom(token):
+    try:
+        return int(token)
+    except ValueError:
+        try:
+            return float(token)
+        except ValueError:
+            return token
+
 def read(tokens):
     if len(tokens) == 0:
         raise SyntaxError('Unexpected EOF')
@@ -16,7 +25,7 @@ def read(tokens):
     elif ')' == token:
         raise SyntaxError('Unexpected ")"')
     else:
-        return token
+        return atom(token)
 
 def parse(program):
     return read(tokenize(program))
