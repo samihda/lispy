@@ -20,4 +20,10 @@ def global_env():
         'number?': lambda x: isinstance(x, (int, float)),
         'procedure?': callable,
         'symbol?': lambda x: isinstance(x, str),
+
+        'car': lambda x: x[0],
+        'cdr': lambda x: x[1:],
+        'cons': lambda x, y: [x] + y,
+        'list': lambda *x: list(x),
+        'length': len,
     }
